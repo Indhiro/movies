@@ -26,8 +26,7 @@ class movieModel {
             release_date: req.body.release_date,
             notes: req.body.notes,
             is_publish: req.body.is_publish,
-            cast: req.body.cast,
-            id_cast: req.body.id_cast
+            cast: req.body.cast
         }
         let query = `INSERT INTO movies.movies SET ? `;
         db.query(query, data, function (err, result, fields) {
@@ -37,7 +36,7 @@ class movieModel {
     };
 
     static updateMovie(req, res, next) {
-        let { id_movies, title, director, release_date, notes, is_publish, cast, id_cast } = req.body;
+        let { id_movies, title, director, release_date, notes, is_publish, cast } = req.body;
         if (!id_movies) res.send('Error, id tidak boleh kosong!');
 
         let query = `UPDATE movies.movies SET `
